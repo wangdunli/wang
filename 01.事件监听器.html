@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			onload = function () {
+				//   捕获模式不生效  标记
+				var container = document.getElementById("container");
+				//  事件传递   冒泡   捕获，区别? 传递顺序  
+				container.addEventListener("click",container_click,true);
+				// 事件移除  注意点，就是添加的时候如果是 捕获模式，移除的时候也必须是捕获模式
+//				container.removeEventListener("click",container_click);
+				
+				var box = document.getElementsByClassName('box')[0];
+				
+				box.addEventListener("click",function () {
+//					alert("盒子被点击");
+					console.log("盒子被点击");
+				},false);
+				
+				/**
+				 * 事件监听器也可以进行移出 
+				 * 		① 释放资源
+				 * 		② 防止重复点击使用
+				 * 			点击的时候，在函数中直接移除事件
+				 * 			在函数逻辑处理完成，再添加事件
+				 * 
+				 */
+				
+			
+				
+			}
+			
+			function container_click () {
+				console.log("容器点击");
+			}
+			
+		</script>
+		<style type="text/css">
+			.box{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+			#container{
+				width: 400px;
+				height: 400px;
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="container">
+			
+			<div class="box">
+				
+			</div>
+			
+			
+		</div>
+		
+	</body>
+</html>
